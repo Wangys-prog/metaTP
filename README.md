@@ -84,7 +84,32 @@ metaTP: a pipeline for analyzing meta-transcriptome.metaTP is a pipeline that in
 	wget https://anaconda.org/bioconda/salmon/1.1.0/download/linux-64/salmon-1.1.0-hf69c8f4_0.tar.bz2  
 	conda install --use-local salmon-1.1.0-hf69c8f4_0.tar.bz2  
 
+### **5. Sequence quality control, rmrRNA contig cds**
 
+	python 5.gene_expression_quant.py -i ./test_sra_data/rmrRNA -index ./test_sra_data/transcripts_index -p 24 -o ./test_sra_data  
+   
+	#output_dir：./test_sra_data/transcripts_quant/transcript_abundance_quantification_table.csv  
+	#-i (input folder containing fastq)   
+	#-index (transcripts_index obtained in the previous step)  
+	#-p (threads,default=24)  
+	#-o (the output folder)  
+   
+	#fastq后缀文件  
+	#对双端测序数据reads表达量的估计  
+	salmon quant -i transcripts_index -l <LIBTYPE> -1 reads1.fq -2 reads2.fq -o transcripts_quant  
+	#对单端测序数据reads表达量的估计  
+	salmon quant -i transcripts_index -l <LIBTYPE> -r reads.fq -o transcripts_quant  
+	### 命令quant均适用于这两个index(quasi-mapping or SMEM-based)，此外，Salmon能够自动检测到使用的是哪种index，从而采用与之匹配的比对方法。  
+	### 注意：参数-l必须指定在参数-1，-2和-r的前面。  
+	### 生成一个目录，内含文件quant.sf  
+
+	可选步骤过滤低表达的基因初步过滤低表达基因与保存counts数据  
+ 	由于transcript_abundance_quantification_table.csv数据量比较大，所以选择过滤掉样本序列数（设定一定阈值进行过滤）  
+  
+  	获得seqkit grep --pattern-file filter_id.txt ./test_sra_data2/megahit/all_longest_orfs_cds_rmdup_id.fasta > ./test_sra_data2/final_table.fasta  
+
+
+ 
 ## **If you use Effector-GAN, please cite:** 
     (1) Wang Y, .Effector-GAN: prediction of fungal effector proteins based on pre-trained deep representation learning methods and generative adversarial networks
     (2) Yansu Wang, Murong Zhou, Quan Zou, Lei Xu. Machine learning for phytopathology: from the molecular scale towards the network scale. Briefings in Bioinformatics. 2021, Doi: 10.1093/bib/bbab037
