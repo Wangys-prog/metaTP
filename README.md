@@ -2,13 +2,7 @@
    
 # metaTP
 
-metaTP: a pipeline for analyzing meta-transcriptome.
-
-metaTP is a pipeline that integrated bioinformatics tools for analyzing metatranscriptomic data comprehensively.
-
-It includes quality control, non-coding RNA removal, transcript expression quantification, differential gene expression analysis, functional annotation, co-expression network analysis. 
-
-Before running Effector-GAN, users should make sure all the following packages are installed in their Python environment. 
+metaTP: a pipeline for analyzing meta-transcriptome.metaTP is a pipeline that integrated bioinformatics tools for analyzing metatranscriptomic data comprehensively.It includes quality control, non-coding RNA removal, transcript expression quantification, differential gene expression analysis, functional annotation, co-expression network analysis. 
 
 ## **Prerequisites**
 ### **Install conda software**
