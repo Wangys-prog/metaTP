@@ -69,7 +69,7 @@ metaTP: a pipeline for analyzing meta-transcriptome.metaTP is a pipeline that in
 	conda install -c anaconda libstdcxx-ng  
 	删除anaconda3/envs/metaTP/lib中的 rm -rf libstdc++.so， 保留一个版本的libstdc++.so.6.xxx.xxx'  
 
-### **4. Sequence quality control, rmrRNA contig cds**
+### **4. transcript_index**
 
 	python 4.transcript_index.py -i ./test_sra_data/megahit/all_longest_orfs_cds_rmdup_id.fasta -o ./test_sra_data    
 	# output_dir：transcripts_index    
@@ -84,7 +84,7 @@ metaTP: a pipeline for analyzing meta-transcriptome.metaTP is a pipeline that in
 	wget https://anaconda.org/bioconda/salmon/1.1.0/download/linux-64/salmon-1.1.0-hf69c8f4_0.tar.bz2  
 	conda install --use-local salmon-1.1.0-hf69c8f4_0.tar.bz2  
 
-### **5. Sequence quality control, rmrRNA contig cds**
+### **5. gene_expression_quant**
 
 	python 5.gene_expression_quant.py -i ./test_sra_data/rmrRNA -index ./test_sra_data/transcripts_index -p 24 -o ./test_sra_data  
    
@@ -94,21 +94,59 @@ metaTP: a pipeline for analyzing meta-transcriptome.metaTP is a pipeline that in
 	#-p (threads,default=24)  
 	#-o (the output folder)  
    
-	#fastq后缀文件  
-	#对双端测序数据reads表达量的估计  
-	salmon quant -i transcripts_index -l <LIBTYPE> -1 reads1.fq -2 reads2.fq -o transcripts_quant  
-	#对单端测序数据reads表达量的估计  
-	salmon quant -i transcripts_index -l <LIBTYPE> -r reads.fq -o transcripts_quant  
-	### 命令quant均适用于这两个index(quasi-mapping or SMEM-based)，此外，Salmon能够自动检测到使用的是哪种index，从而采用与之匹配的比对方法。  
-	### 注意：参数-l必须指定在参数-1，-2和-r的前面。  
-	### 生成一个目录，内含文件quant.sf  
+	#fastq后缀文件   
+	#对双端测序数据reads表达量的估计    
+	salmon quant -i transcripts_index -l <LIBTYPE> -1 reads1.fq -2 reads2.fq -o transcripts_quant    
+	#对单端测序数据reads表达量的估计    
+	salmon quant -i transcripts_index -l <LIBTYPE> -r reads.fq -o transcripts_quant    
+	### 命令quant均适用于这两个index(quasi-mapping or SMEM-based)，此外，Salmon能够自动检测到使用的是哪种index，从而采用与之匹配的比对方法。    
+	### 注意：参数-l必须指定在参数-1，-2和-r的前面。   
+	### 生成一个目录，内含文件quant.sf   
 
-	可选步骤过滤低表达的基因初步过滤低表达基因与保存counts数据  
- 	由于transcript_abundance_quantification_table.csv数据量比较大，所以选择过滤掉样本序列数（设定一定阈值进行过滤）  
+	可选步骤过滤低表达的基因初步过滤低表达基因与保存counts数据   
+ 	由于transcript_abundance_quantification_table.csv数据量比较大，所以选择过滤掉样本序列数（设定一定阈值进行过滤）   
   
-  	获得seqkit grep --pattern-file filter_id.txt ./test_sra_data2/megahit/all_longest_orfs_cds_rmdup_id.fasta > ./test_sra_data2/final_table.fasta  
+  	获得seqkit grep --pattern-file filter_id.txt ./test_sra_data2/megahit/all_longest_orfs_cds_rmdup_id.fasta > ./test_sra_data2/final_table.fasta   
 
+### **6. DEG_analysis**
 
+	python 6.DEG_analysis.py -i ./test_sra_data/transcripts_quant/transcript_abundance_quantification_table_filter.csv -g ./sample_group.csv -n rhizosphere/bulk -s /home/mne/metaTP/test_sra_data/megahit/all_longest_orfs_cds_rmdup_id.fasta -o ./test_sra_data/DEG_result -p 0.001 -f 1  
+	python 6.DEG_analysis.py -i ./test_sra_data/transcripts_quant/transcript_abundance_quantification_table_filter.csv -g ./sample_group.csv -n rhizosphere/bulk -s /home/mne/metaTP/test_sra_data/megahit/all_longest_orfs_cds_rmdup_id.fasta -o ./test_sra_data/DEG_result0.05 -p 0.05 -f 1  
+    
+	python 6.up_regulated_gene.py -i ./test_sra_data/DEG_result0.05 -s /home/mne/metaTP/test_sra_data/megahit/all_longest_orfs_cds_rmdup_id.fasta  
+
+	python 6.down_regulated_gene.py -i ./test_sra_data/DEG_result0.05 -s /home/mne/metaTP/test_sra_data/megahit/all_longest_orfs_cds_rmdup_id.fasta      
+   
+	# Required file: Rscript DEG_analysis.r;   
+	# -i transcript_abundance_quantification_table.csv # Gene expression matrix based on TPM from Step 5；  
+	# -g Required file: sample_group.csv(The first column is the sample name,column name is "sample"; the second column is the group name; colum name is "group")   
+	# -n grouping information; The name must be the same with sample_group.csv  
+	# -s all_final.contigs_cds_rmdup_id.fa; the cds sequences from Step 3 #absolute path  
+	# -o output directory  
+	# -p cut_off_pvalue  
+	# -f cut_off_logFC  
+### **7. emapper.py**
+
+	emapper.py -m diamond -i ./test_sra_data2/final_table.fasta --itype CDS --translate --cpu 20 --data_dir /home/mne/metaTP/eggnog-mapper_database --dmnd_db /home/mne/metaTP/eggnog-mapper_database/eggnog_proteins.dmnd --output_dir test_sra_data2 -o final_table_sequence --block_size 0.4 --override
+	emapper.py -m diamond -i ./test_sra_data/DEG_result0.05/differential_gene_sequence_up.fasta --itype CDS --translate --cpu 20 --data_dir /home/mne/metaTP/eggnog-mapper_database --dmnd_db /home/mne/metaTP/eggnog-mapper_database/eggnog_proteins.dmnd --output_dir test_sra_data -o differential_gene_sequence_up --block_size 0.4 --override
+ 
+	emapper.py --cpu 12 -i ./test_sra_data/DEG_result0.05/differential_gene_sequence_up.pep -o test_sra_data/DEG_annotation_0.05_up_result --data_dir /home/mne/metaTP/eggnog-mapper_database --override --seed_ortholog_evalue 0.001 
+	emapper.py -i ./test_sra_data/DEG_result0.05/differential_gene_sequence_up.fasta --itype CDS --translate --cpu 20 --data_dir /home/mne/metaTP/eggnog-mapper_database --output_dir test_sra_data -o differential_gene_sequence_up
+   
+	/home/wys/anaconda3/envs/metaTP/bin/download_eggnog_data.py
+	wget -nH --user-agent=Mozilla/5.0 --relative --no-parent --reject "index.html*" --cut-dirs=4 -e robots=off -O eggnog.taxa.tar.gz http://eggnogdb.embl.de/download/emapperdb-5.0.2/eggnog.taxa.tar.gz
+	wget -nH --user-agent=Mozilla/5.0 --relative --no-parent --reject "index.html*" --cut-dirs=4 -e robots=off -O eggnog.db.gz http://eggnogdb.embl.de/download/emapperdb-5.0.2/eggnog.db.gz
+	wget -nH --user-agent=Mozilla/5.0 --relative --no-parent --reject "index.html*" --cut-dirs=4 -e robots=off -O eggnog_proteins.dmnd.gz http://eggnogdb.embl.de/download/emapperdb-5.0.2/eggnog_proteins.dmnd.gz
+
+	如果内存比较小可以设置小一些的block_size (--block_size 0.4),默认值是block_size 为2
+	eggnog-mapper
+	diamond v0.9.19.120 emapper-2.1.3对应的diamond
+	 v2.1.8.162 emapper-2.1.12
+	wget https://github.com/bbuchfink/diamond/releases/diamond-linux64.tar.gz
+	tar xzf diamond-linux64.tar.gz
+	sudo mv diamond /home/wys/anaconda3/envs/metaTP1.0/bin
+	wget https://anaconda.org/bioconda/eggnog-mapper/2.1.12/download/noarch/eggnog-mapper-2.1.12-pyhdfd78af_0.tar.bz2
+	conda install --use-local eggnog-mapper-2.1.12-pyhdfd78af_0.tar.bz2
  
 ## **If you use Effector-GAN, please cite:** 
     (1) Wang Y, .Effector-GAN: prediction of fungal effector proteins based on pre-trained deep representation learning methods and generative adversarial networks
