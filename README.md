@@ -33,8 +33,8 @@ Before running Effector-GAN, users should make sure all the following packages a
 
      python 1.prefetch_sra2fastq.py -i SRR_Acc_List.txt -o test_sra_data 
 
-  ` # -i (SRR_Acc_List.txt)`\<br>
-  ` # -o (output_dir)`\<br>
+  ` # -i (SRR_Acc_List.txt)`\<br>'
+  ` # -o (output_dir)`\<br>'
   ` # output_dir：test_sra_data； test_sra_data/fastq`
 
    
