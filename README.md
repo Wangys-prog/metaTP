@@ -31,7 +31,7 @@ metaTP: a pipeline for analyzing meta-transcriptome.metaTP is a pipeline that in
        # output_dir：test_sra_data； test_sra_data/fastq  
  
 ### **2. Sequence quality control**
-、
+
       python 2.QC_test.py -i ./test_sra_data/fastq -o ./test_sra_data/QC_before_result  
       # -i (fastq files)  
       # -o (output_dir)  
