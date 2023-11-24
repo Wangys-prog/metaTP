@@ -9,9 +9,11 @@ metaTP is a pipeline that integrated bioinformatics tools for analyzing metatran
 It includes quality control, non-coding RNA removal, transcript expression quantification, differential gene expression analysis, functional annotation, co-expression network analysis. 
 
 Before running Effector-GAN, users should make sure all the following packages are installed in their Python environment. 
-   
 
-# **The codes can be downloaded from our FTP**
+
+## **Prerequisites**
+
+### **Downloaded the conda environment**
 
   sftp -oPort=60000 ftpuser@47.109.24.44:6000
 
@@ -19,16 +21,18 @@ Before running Effector-GAN, users should make sure all the following packages a
 
   cd ftp_soft
  
+  get -r metaTP.tar.tgz
+ 
+
+  tar zxvf  metaTP.tar.tgz -C ./    
+   
+
+# **The codes can be downloaded from our FTP**
+
+  
   get -r metaTP_pipeline.tar.tgz
 
-  
-  
-  
-  
-
-## **Prerequisites**
-
-### **iFeature**
+  tar -xzvf metaTP_pipeline.tar.tgz
     
     To obtain iFeature, please download from https://github.com/Superzchen/iFeature/.
     
