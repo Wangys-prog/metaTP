@@ -14,7 +14,7 @@ Before running Effector-GAN, users should make sure all the following packages a
 ## **Prerequisites**
 
 ### **Downloaded the conda environment**
-
+  
   sftp -oPort=60000 ftpuser@47.109.24.44:6000
 
   ftpuser@47.109.24.44's password: ftpuser
