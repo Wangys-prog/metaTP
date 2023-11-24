@@ -15,16 +15,11 @@ Before running Effector-GAN, users should make sure all the following packages a
 
 ### **Downloaded the conda environment**
   
-  sftp -oPort=60000 ftpuser@47.109.24.44:6000
-
-  ftpuser@47.109.24.44's password: ftpuser
-
-  cd ftp_soft
- 
-  get -r metaTP.tar.tgz
- 
-
-  tar zxvf  metaTP.tar.tgz -C ./    
+      sftp -oPort=60000 ftpuser@47.109.24.44:6000
+      ftpuser@47.109.24.44's password: ftpuser
+      cd ftp_soft
+      get -r metaTP.tar.tgz
+      tar zxvf  metaTP.tar.tgz -C ./    
    
 
 # **The codes can be downloaded from our FTP**
