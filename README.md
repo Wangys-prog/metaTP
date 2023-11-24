@@ -12,24 +12,31 @@ Before running Effector-GAN, users should make sure all the following packages a
 
 
 ## **Prerequisites**
-
-### **Downloaded the conda environment**
-  
+### **Install conda software**
+### **Downloaded the conda environment** 
       sftp -oPort=60000 ftpuser@47.109.24.44:6000
       ftpuser@47.109.24.44's password: ftpuser
       cd ftp_soft
       get -r metaTP.tar.tgz
-      tar zxvf  metaTP.tar.tgz -C ./    
+      tar zxvf  metaTP.tar.tgz -C ./   
+      conda create -n metaTP
+      tar -xzvf metaTP.tar.gz -C /home/xxx/anaconda3/envs/metaTP
+      conda activate metaTP
    
 ### **The codes can be downloaded from our FTP**
       
       get -r metaTP_pipeline.tar.tgz
       tar -xzvf metaTP_pipeline.tar.tgz
-    
-    
-   **Add iFeature into environment variables (~/.bashrc)** 
-   
-   ` export PATH=$PATH:/xxxx/xxxx/xxxxx/iFeature`
+      cd metaTP_pipeline
+
+**1. Download the sra sequence according to the ACC number**
+
+     python 1.prefetch_sra2fastq.py -i SRR_Acc_List.txt -o test_sra_data 
+
+    ` # -i (SRR_Acc_List.txt)`
+    ` # -o (output_dir)`
+    ` #output_dir：test_sra_data； test_sra_data/fastq`
+
    
    `source ~/.bashrc`
  
