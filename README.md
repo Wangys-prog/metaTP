@@ -37,7 +37,7 @@ metaTP: a pipeline for analyzing meta-transcriptome.metaTP is a pipeline that in
       # -o (output_dir)  
       # output_dir: test_sra_data/QC_before_result  
 
-### **2. Sequence quality control, rmrRNA contig cds**
+### **3. Sequence quality control, rmrRNA contig cds**
 
        python 3.QC_rmrRNA_contigs_cds.py -i ./test_sra_data/fastq -o ./test_sra_data  
    
@@ -68,6 +68,22 @@ metaTP: a pipeline for analyzing meta-transcriptome.metaTP is a pipeline that in
 
 	conda install -c anaconda libstdcxx-ng  
 	删除anaconda3/envs/metaTP/lib中的 rm -rf libstdc++.so， 保留一个版本的libstdc++.so.6.xxx.xxx'  
+
+### **4. Sequence quality control, rmrRNA contig cds**
+
+	python 4.transcript_index.py -i ./test_sra_data/megahit/all_longest_orfs_cds_rmdup_id.fasta -o ./test_sra_data    
+	# output_dir：transcripts_index    
+	# -i (input folder contain fastq )    
+	# -k (kmer setting,default=31)   
+	# -p（threads,default=24）  
+	# -o (the output folder)   
+	salmon index -t transcripts.fa -i transcripts_index --type quasi -k 31  
+	salmon index -t ./TransDecoder/all_final_cds_rmdup.fa -i ./salmon_index/transcripts_index  
+	salmon index -t ./TransDecoder/all_final_cds_rmdup.fa -i ./TransDecoder/salmon_index/transcripts_index -p 24  
+	salmon index -t ./all_final.contigs_cds_rmdup_id.fa -i ./TransDecoder/salmon_index/transcripts_index  -p 24 -k 31  
+	wget https://anaconda.org/bioconda/salmon/1.1.0/download/linux-64/salmon-1.1.0-hf69c8f4_0.tar.bz2  
+	conda install --use-local salmon-1.1.0-hf69c8f4_0.tar.bz2  
+
 
 ## **If you use Effector-GAN, please cite:** 
     (1) Wang Y, .Effector-GAN: prediction of fungal effector proteins based on pre-trained deep representation learning methods and generative adversarial networks
