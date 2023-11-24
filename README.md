@@ -24,19 +24,18 @@ metaTP: a pipeline for analyzing meta-transcriptome.metaTP is a pipeline that in
 
 ### **1. Download the sra sequence according to the ACC number**
 
-     python 1.prefetch_sra2fastq.py -i SRR_Acc_List.txt -o test_sra_data 
+     python 1.prefetch_sra2fastq.py -i SRR_Acc_List.txt -o test_sra_data  
 
-       # -i (SRR_Acc_List.txt)
-       # -o (output_dir) 
-       # output_dir：test_sra_data； test_sra_data/fastq
+       # -i (SRR_Acc_List.txt)  
+       # -o (output_dir)   
+       # output_dir：test_sra_data； test_sra_data/fastq  
  
 ### **2. Sequence quality control**
 、
-      python 2.QC_test.py -i ./test_sra_data/fastq -o ./test_sra_data/QC_before_result
-      # -i (fastq files)
-      # -o (output_dir)
-      # output_dir: test_sra_data/QC_before_result
- 
+      python 2.QC_test.py -i ./test_sra_data/fastq -o ./test_sra_data/QC_before_result  
+      # -i (fastq files)  
+      # -o (output_dir)  
+      # output_dir: test_sra_data/QC_before_result  
  
 
 ## **If you use Effector-GAN, please cite:** 
