@@ -21,15 +21,11 @@ Before running Effector-GAN, users should make sure all the following packages a
       get -r metaTP.tar.tgz
       tar zxvf  metaTP.tar.tgz -C ./    
    
-
-# **The codes can be downloaded from our FTP**
-
-  
-  get -r metaTP_pipeline.tar.tgz
-
-  tar -xzvf metaTP_pipeline.tar.tgz
+### **The codes can be downloaded from our FTP**
+      
+      get -r metaTP_pipeline.tar.tgz
+      tar -xzvf metaTP_pipeline.tar.tgz
     
-    To obtain iFeature, please download from https://github.com/Superzchen/iFeature/.
     
    **Add iFeature into environment variables (~/.bashrc)** 
    
