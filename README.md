@@ -8,7 +8,7 @@ metaTP: a pipeline for analyzing meta-transcriptome.metaTP is a pipeline that in
 ### **Install conda software**
 ### **Downloaded the conda environment** 
       sftp -oPort=60000 ftpuser@47.109.24.44:6000
-      ftpuser@47.109.24.44's 
+      ftpuser@47.109.24.44 
       password: ftpuser
       cd ftp_soft
       get -r metaTP.tar.tgz
