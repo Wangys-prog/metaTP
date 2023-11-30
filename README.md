@@ -161,7 +161,7 @@ metaTP: a pipeline for analyzing meta-transcriptome.metaTP is a pipeline that in
 
       all codes in Gene_co-expression_network.zip
  
-## **If you use Effector-GAN, please cite:** 
-    (1) Wang Y, .Effector-GAN: prediction of fungal effector proteins based on pre-trained deep representation learning methods and generative adversarial networks
+## **If you use metaTP, please cite:** 
+    (1) metaTP: a pipeline for analyzing meta-transcriptome
     (2) Yansu Wang, Murong Zhou, Quan Zou, Lei Xu. Machine learning for phytopathology: from the molecular scale towards the network scale. Briefings in Bioinformatics. 2021, Doi: 10.1093/bib/bbab037
-    (3) Yansu Wang, Lei Xu, Quan Zou, Chen Lin. prPred-DRLF: plant R protein predictor using deep representation learning features. Proteomics. 2021. DOI: 10.1002/pmic.202100161
+   
