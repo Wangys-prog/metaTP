@@ -108,6 +108,18 @@ metaTP: a pipeline for analyzing meta-transcriptome.metaTP is a pipeline that in
   
         # seqkit grep --pattern-file filter_id.txt ./test_sra_data2/megahit/all_longest_orfs_cds_rmdup_id.fasta > ./test_sra_data2/final_table.fasta   
 
+### **5.1 filter_gene.R**
+         library("tidyverse")
+         table_filter<- read.csv("transcript_abundance_quantification_table_filter.csv",header=T,row.names=1)
+         S_id <- read.csv("Streptophyta_id.csv",header=F,row.names = 1)
+         rownames(S_id)
+
+         table_filter2<- table_filter[-which(rownames(table_filter) %in% rownames(S_id)),]
+         #table_filter2<- table_filter %>% filter(rownames(table_filter) %in% rownames(S_id))
+         nrow(table_filter2)
+         nrow(table_filter)
+         nrow(S_id)
+         write.csv(data.frame(GeneID=rownames(table_filter2),table_filter2),"transcript_abundance_quantification_table_filter2.csv",row.names=F)
 
 ### **6. DEG_analysis**
 
