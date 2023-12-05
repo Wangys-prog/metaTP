@@ -10,6 +10,7 @@ metaTP: a pipeline for analyzing meta-transcriptome.metaTP is a pipeline that in
       sftp -oPort=6000 ftpuser@47.109.24.44
       ftpuser@47.109.24.44 
       password: ftpuser
+      ls
       cd ftp_soft
       get -r metaTP.tar.tgz
       tar zxvf  metaTP.tar.tgz -C ./   
