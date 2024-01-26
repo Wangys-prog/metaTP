@@ -6,19 +6,19 @@ metaTP: a pipeline for analyzing meta-transcriptome.metaTP is a pipeline that in
 
 ## **Prerequisites**
 ### **Install conda software**
-### **Downloaded the conda environment in our FTP** 
-      sftp -oPort=6000 ftpuser@47.109.24.44
-      ftpuser@47.109.24.44 
-      password: ftpuser
-      ls
-      cd ftp_soft
+### **Downloaded the conda environment in our OBS** 
+URL:https://e-share.obs-website.cn-north-1.myhuaweicloud.com? 
+token=AoEwdFl40jDPD8Kz5t/mbW0buwwa1OGzg1o18CZSpn+B7FoikdQ+uXQlXfu7v8RnT4JnRsEOHvDXFbuJ468nCwZ154OvWGbP2iMZWd26IgnN74cKjlF1xiBCGStN/o/g1jiY5fKU2tv9Gv0JWZ9CHTqMBMZyQ953BsGzXZPkBAnCkdxKb3j7Mj29wcH87geArPzkgRBy3ZBF2WzwbfaK8UKxwNwk0E+XwnMr2BLSTYs8Yht0NMpWrnsP6/oo/Jbyt3eaq0WVYopq5wYEqTOYDg7aO7A28nfxaShHlR3gyTBbphSaEnrNSr1Aoc2fzo/rm3TxV5qiX2h16BCT2hE1y8dzjSbYoXVU2ogHZdVREu0rh5zlhm46sZOJHeW614TxFs8nI+VjqpEey8mlLuRuOFQzeRSUNwBGMfvbw9X/SWVdQufq6Vz6tfy+1rsFL6sqcEnNAk6rxFf+ydyZkKzRImsobl4JBzDu73t8oYp61ljnAe8FdfTkfyKxFYpevgrbbZFxszghgF8tJJozDUg1ig==
+
+提取码:
+123456
       get -r metaTP.tar.tgz
       tar zxvf  metaTP.tar.tgz -C ./   
       conda create -n metaTP
       tar -xzvf metaTP.tar.gz -C /home/xxx/anaconda3/envs/metaTP
       conda activate metaTP
    
-### **The codes can be downloaded from our FTP**
+### **The codes can be downloaded from our OBS**
       
       get -r metaTP_pipeline.tar.tgz
       tar -xzvf metaTP_pipeline.tar.tgz
