@@ -8,8 +8,7 @@ metaTP: a pipeline for analyzing meta-transcriptome.metaTP is a pipeline that in
 ### **Install conda software**
 ### **Downloaded the conda environment in our OBS** 
 
-[Obsidian Help](URL:https://e-share.obs-website.cn-north-1.myhuaweicloud.com?
-token=AoEwdFl40jDPD8Kz5t/mbW0buwwa1OGzg1o18CZSpn+B7FoikdQ+uXQlXfu7v8RnT4JnRsEOHvDXFbuJ468nCwZ154OvWGbP2iMZWd26IgnN74cKjlF1xiBCGStN/o/g1jiY5fKU2tv9Gv0JWZ9CHTqMBMZyQ953BsGzXZPkBAnCkdxKb3j7Mj29wcH87geArPzkgRBy3ZBF2WzwbfaK8UKxwNwk0E+XwnMr2BLSTYs8Yht0NMpWrnsP6/oo/Jbyt3eaq0WVYopq5wYEqTOYDg7aO7A28nfxaShHlR3gyTBbphSaEnrNSr1Aoc2fzo/rm3TxV5qiX2h16BCT2hE1y8dzjSbYoXVU2ogHZdVREu0rh5zlhm46sZOJHeW614TxFs8nI+VjqpEey8mlLuRuOFQzeRSUNwBGMfvbw9X/SWVdQufq6Vz6tfy+1rsFL6sqcEnNAk6rxFf+ydyZkKzRImsobl4JBzDu73t8oYp61ljnAe8FdfTkfyKxFYpevgrbbZFxszghgF8tJJozDUg1ig==)
+[OBS link](URL:https://e-share.obs-website.cn-north-1.myhuaweicloud.com?token=AoEwdFl40jDPD8Kz5t/mbW0buwwa1OGzg1o18CZSpn+B7FoikdQ+uXQlXfu7v8RnT4JnRsEOHvDXFbuJ468nCwZ154OvWGbP2iMZWd26IgnN74cKjlF1xiBCGStN/o/g1jiY5fKU2tv9Gv0JWZ9CHTqMBMZyQ953BsGzXZPkBAnCkdxKb3j7Mj29wcH87geArPzkgRBy3ZBF2WzwbfaK8UKxwNwk0E+XwnMr2BLSTYs8Yht0NMpWrnsP6/oo/Jbyt3eaq0WVYopq5wYEqTOYDg7aO7A28nfxaShHlR3gyTBbphSaEnrNSr1Aoc2fzo/rm3TxV5qiX2h16BCT2hE1y8dzjSbYoXVU2ogHZdVREu0rh5zlhm46sZOJHeW614TxFs8nI+VjqpEey8mlLuRuOFQzeRSUNwBGMfvbw9X/SWVdQufq6Vz6tfy+1rsFL6sqcEnNAk6rxFf+ydyZkKzRImsobl4JBzDu73t8oYp61ljnAe8FdfTkfyKxFYpevgrbbZFxszghgF8tJJozDUg1ig==)
 #### **password：**
 #### **123456**
 
