@@ -12,7 +12,7 @@ metaTP: a pipeline for analyzing meta-transcriptome.metaTP is a pipeline that in
 ### **password:**
 ### **123456**
 
-#### **Codes also can download from [mygoogledrive](https://drive.google.com/drive/folders/1OMdrzCSU_e81C3xLBAPkKDp0LlM4OjTc?usp=sharing)
+### **Codes also can be download from [my google drive](https://drive.google.com/drive/folders/1OMdrzCSU_e81C3xLBAPkKDp0LlM4OjTc?usp=sharing)
 
       get -r metaTP.tar.tgz
       tar zxvf  metaTP.tar.tgz -C ./   
